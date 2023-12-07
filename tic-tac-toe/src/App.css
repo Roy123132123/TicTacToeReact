@@ -11,10 +11,34 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.Square{
-  font-size: 128%;
-  margin: 0.5px;
+div{
+  margin: 0px;
+  padding: 0px;
 }
-
-
+.Square{
+  background: #fff;
+  border: 2px solid #3a3939;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+.Row:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+*{
+  box-sizing: border-box;
+}
+.status{
+  font-family: 'Times New Roman', Times, serif;
+  width: 10vw;
+}
 
