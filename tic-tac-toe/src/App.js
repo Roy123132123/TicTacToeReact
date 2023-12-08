@@ -2,7 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import{useState}from  'react';
 
-
+function Restart(){
+  return <button className='Restart'/* onClick={RestartGame}*/>Restart</button>
+}
 function Square({value,onSquareClick}){
   return <button className = "Square" onClick={onSquareClick}>{value}</button>
 }
@@ -33,7 +35,11 @@ export default function Board() {
   }
   return (
   <>
-  <div className= "status">{status}</div>
+    <div className= "status">{status}
+    <header>
+      <Restart />
+    </header>
+    </div>
   <div className = "Container">
     <div className =  "Row">
       <Square value = {squares[0]} onSquareClick={ ()=> handleClick(0)}/>
@@ -53,6 +59,7 @@ export default function Board() {
   </div>
   </> );
     function CalcWinner(squares){
+      let GameOver = null;
       const lines = [
         [0, 1, 2],
         [3, 4, 5],
@@ -65,7 +72,11 @@ export default function Board() {
       for(let i = 0; i<lines.length; i++){
         const[a,b,c]= lines[i];
         if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){
-          return squares[a];
+          GameOver = true;
+
+          return squares[a],GameOver;
+        }else{
+          return GameOver = false;
         }
       }
       return null;
