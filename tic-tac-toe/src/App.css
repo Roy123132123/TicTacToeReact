@@ -1,6 +1,8 @@
-.App {
-  text-align: center;
+/*General classes*/
+*{
+  box-sizing: border-box;
 }
+
 .Container {
   background-color: #282c34;
   min-height: 100vh;
@@ -11,6 +13,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+
+/*Playing field*/
+
 div{
   margin: 0px;
   padding: 0px;
@@ -34,9 +40,7 @@ div{
   content: '';
   display: table;
 }
-*{
-  box-sizing: border-box;
-}
+/*Buttons*/
 .status{
   font-size: 120%;
   color: #0099ad;
@@ -54,4 +58,3 @@ div{
 .restart:active{
   box-shadow: 0px 0px 0px 0px #ebebeb5b;
 }
-

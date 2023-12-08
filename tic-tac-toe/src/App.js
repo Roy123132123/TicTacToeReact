@@ -4,9 +4,11 @@ import{useState}from  'react';
 function Restart(onRestart){
   return <button className='restart' onClick={onRestart}>Restart</button>
 }
+//makes a new function react component
 function Square({value,onSquareClick}){
   return <button className = "Square" onClick={onSquareClick}>{value}</button>
 }
+//default keyword makes this function the main function to execute
 export default function Board() {
   const[squares,setSquares] =  useState(Array(9).fill(null));
   const[xIsNext,setXNext] = useState(true);
