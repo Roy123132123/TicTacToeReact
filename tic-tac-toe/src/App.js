@@ -1,8 +1,15 @@
 import './App.css';
 import{useState}from  'react';
+const[squares,setSquares] =  useState(Array(9).fill(null));
 
-function Restart(onRestart){
-  return <button className='restart' onClick={onRestart}>Restart</button>
+function Restart(squares){
+
+  function restart(){
+    for(let i = 0; i<squares.length; i++){
+      squares[i] = null;
+    }
+  }
+  return <button className='restart' onClick={restart}>Restart</button>
 }
 //makes a new function react component
 function Square({value,onSquareClick}){
@@ -10,9 +17,8 @@ function Square({value,onSquareClick}){
 }
 //default keyword makes this function the main function to execute
 export default function Board() {
-  const[squares,setSquares] =  useState(Array(9).fill(null));
   const[xIsNext,setXNext] = useState(true);
-  const Winner = CalcWinner(squares);
+  const Winner = calcWinner(squares);
   let status;
   if(Winner){
     status= `Game over Winner is:${Winner}`;
@@ -20,13 +26,8 @@ export default function Board() {
     // if xIsNext set status to x else to O
     status =  "Next player: "+(xIsNext?"X":"O")
   }
-  function Restart(){
-    for(let i = 0; i<squares.length; i++){
-      squares[i] = "";
-    }
-  }
   function handleClick(i){
-    if(squares[i]|| CalcWinner[squares]){
+    if(squares[i]|| calcWinner[squares]){
       return;
     }
     const nextSquares = squares.slice();
@@ -49,23 +50,23 @@ export default function Board() {
     </div>
   <div className = "Container">
     <div className =  "Row">
-      <Square value = {squares[0]} onSquareClick={ ()=> handleClick(0)}  onRestart = {() => Restart()}/>
-      <Square value = {squares[1]} onSquareClick={ ()=> handleClick(1)}  onRestart = {() => Restart()}/>
-      <Square value ={squares[2]} onSquareClick={ ()=> handleClick(2)}   onRestart= {() => Restart()}/>
+      <Square value = {squares[0]} onSquareClick={ ()=> handleClick(0)}/>
+      <Square value = {squares[1]} onSquareClick={ ()=> handleClick(1)}/>
+      <Square value ={squares[2]} onSquareClick={ ()=> handleClick(2)}/>
     </div>
     <div className =  "Row">
-      <Square value = {squares[3]} onSquareClick={ ()=> handleClick(3)}  onRestart = {() => Restart()}/>
-      <Square value = {squares[4]} onSquareClick={ ()=> handleClick(4)}  onRestart = {() => Restart()}/>
-      <Square value = {squares[5]} onSquareClick={ ()=> handleClick(5)}  onRestart = {() => Restart()}/>
+      <Square value = {squares[3]} onSquareClick={ ()=> handleClick(3)}/>
+      <Square value = {squares[4]} onSquareClick={ ()=> handleClick(4)}/>
+      <Square value = {squares[5]} onSquareClick={ ()=> handleClick(5)}/>
     </div>
     <div className =  "Row">
-      <Square value = {squares[6]} onSquareClick={ ()=> handleClick(6)}  onRestart = {() => Restart()}/>
-      <Square value = {squares[7]} onSquareClick={ ()=> handleClick(7)}  onRestart = {() => Restart()}/>
-      <Square value = {squares[8]} onSquareClick={ ()=> handleClick(8)}  onRestart = {() => Restart()}/>
+      <Square value = {squares[6]} onSquareClick={ ()=> handleClick(6)}/>
+      <Square value = {squares[7]} onSquareClick={ ()=> handleClick(7)}/>
+      <Square value = {squares[8]} onSquareClick={ ()=> handleClick(8)}/>
     </div>
   </div>
   </> );
-    function CalcWinner(squares){
+    function calcWinner(squares){
       let GameOver = null;
       const lines = [
         [0, 1, 2],
@@ -81,7 +82,7 @@ export default function Board() {
         if(squares[a] && squares[a]=== squares[b] && squares[a] === squares[c]){
           GameOver = true;
 
-          return squares[a],GameOver;
+          return squares[a].GameOver;
         }else{
           return GameOver = false;
         }
