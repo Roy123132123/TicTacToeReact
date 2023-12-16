@@ -22,34 +22,12 @@ function calcWinner(squares) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         GameOver = true;
-        setTimeout(() => {
-          setSquares(Array(9).fill(null));
-          setXNext(true);
-        }, 4000)
         return GameOver, squares[a];
       } else {
         return GameOver = false;
       }
     }
     return null; //if no winner return null
-  }
-async function CalcFull(squares, status, winner) {
-    for (let i = 0; i < squares.length; i++) {
-      await new Promise(resolove => {
-        setTimeout(() => {
-          if (squares[i] === null) {
-            return;
-          } else {
-            status = "Game over the board is full";
-            winner = "There is no winner as the board is full";
-            setTimeout(() => {
-              setSquares(Array(9).fill(null));
-              setXNext(true);
-            }, 3500)
-          }
-        });
-      });
-    }
   }
 
   function handleClick(i) {
@@ -75,10 +53,6 @@ async function CalcFull(squares, status, winner) {
     // if xIsNext set status to x else to O
     status = `Next player: ${xIsNext ? 'X' : 'O'}`;
   }
-  let interval = 12000;
-  setInterval(() => {
-    CalcFull(squares, status, winner);
-  },interval)
   return (
     <>
       <header>
