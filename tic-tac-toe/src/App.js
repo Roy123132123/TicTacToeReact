@@ -49,14 +49,18 @@ function calcWinner(squares) {
   let winner;
   if (Winner) {
     winner = `The winner is ${Winner}`
-  } else {
-    // if xIsNext set status to x else to O
-    status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+  }else {
+    const isBoardFull = squares.every(square => square != null);
+    if(isBoardFull){
+      winner = "No one has won, but all squares are filled";
+    }else{
+      // if xIsNext set status to x else to O
+      status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+    }
   }
   return (
     <>
       <header>
-        <h3>You can wait for the timer to reset the board or you can use the reset button to reset the board</h3>
         <button className='restart' onClick={restart}>Reset</button>
       </header>
       <div className='Container'>
