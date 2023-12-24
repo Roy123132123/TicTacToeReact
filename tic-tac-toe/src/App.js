@@ -51,8 +51,12 @@ function calcWinner(squares) {
     winner = `The winner is ${Winner}`
   }else {
     const isBoardFull = squares.every(square => square != null);
+
     if(isBoardFull){
       winner = "No one has won, but all squares are filled";
+      setTimeout(() => {
+        setSquares(Array(9).fill(null));
+        }, 3000);
     }else{
       // if xIsNext set status to x else to O
       status = `Next player: ${xIsNext ? 'X' : 'O'}`;
