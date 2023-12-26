@@ -63,9 +63,8 @@ div{
   font-size: 120%;
   font-family: 'Times New Roman', Times, serif;
   color: #0099ad;
-  top: 17vw;
+  top: 15vw;
   position: absolute;
-  padding-bottom: 5vw;
 }
 .restart{
   font-weight: 800;
